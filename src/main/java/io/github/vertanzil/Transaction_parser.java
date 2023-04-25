@@ -15,7 +15,7 @@ public class Transaction_parser {
         CSVParser parser = new CSVParser(new FileReader(file), CSVFormat.DEFAULT.withDelimiter(','));
         List<Transaction> transactions = new ArrayList<>();
         for (CSVRecord record : parser) {
-            transactions.add(new Transaction(record.get(0), record.get(1), record.get(2)));
+            transactions.add(new Transaction(record.get(0), record.get(1), record.get(2), ""));
         }
         return transactions;
     }
@@ -23,11 +23,13 @@ public class Transaction_parser {
         private final String date;
         private final String name;
         private final String amount;
+        private final String category;
 
-        public Transaction(String date, String name, String amount) {
+        public Transaction(String date, String name, String amount, String category) {
             this.date = date;
             this.name = name;
             this.amount = amount;
+            this.category = category;
         }
 
         public String getDate() {
@@ -41,5 +43,9 @@ public class Transaction_parser {
         public String getAmount() {
             return amount;
         }
+        public String geteCategory(){
+            return category;
+        }
+
     }
 }
